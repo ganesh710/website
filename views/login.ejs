@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+<script type="text/javascript" src="./angular/login.js"></script>
+<style type="text/css">
+	label{
+		color:#fff;
+	}
+</style>
+
+	<title></title>
+</head>
+<body ng-app="app" ng-controller="Controller" style="background-image: url('./images/bingbackgrounds/16.jpg');background-size: cover;background-repeat: no-repeat;background-attachment: fixed;">
+				<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-md-offset-4">
+						
+					<form class="form-group" style="border: 1px transparent ; padding: 10px ; margin-top: 100px ; border-radius: 3% ; box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.5);background-color: rgba(0,0,0,0.8); ">
+						<h1 style="color: white ; margin-top: 25px; font-size: 50px;text-align: center;"><b>Sign in</b></h1>
+						<label class="label-control" >Email :</label>
+						<input class="form-control" required=""  placeholder="Enter email id " type="email" ng-model="log.email">
+						<label class="label-control">Password :</label>
+						<input class="form-control" required="" placeholder="Password" type="password" ng-model="log.password">
+						<br>
+						<input class="btn btn-primary" type="submit" value="sign in" ng-click="login(log)" >
+					</form>
+					<h3 style="color: black"><i>doesnt have an account?</i></h3><a style="font-size: 30px"><b>signup</b></a>
+					</div>
+				</div>
+				
+			</div>
+			
+
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+<script type="text/javascript" src="./angular/home.js"></script>
+
+
+	<title>navtabs</title>
+</head>
+
+	
+	<style type="text/css">
+		ul{
+			float: right;
+			list-style-type: none;
+		}
+		*{
+			padding: 0px;
+			margin:0px; 
+		}
+		body{
+			background-image:url('./images/bingbackgrounds/2.jpg');
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+		ul li{
+			margin-top: 25px;
+			display: inline-block;
+		}
+		ul li a{
+			background-color: transparent;
+			color: black;
+			border:1px solid transparent;
+			border-radius: 2%;
+			text-decoration: none; 
+			padding: 5px 20px;
+			transition: ease 0.6s;
+
+		}
+		.active a{
+			background-color:#fff;
+			color: black;
+		}
+		ul li a:hover{
+			background-color: #fff;
+		}
+		label{
+			color:#fff;
+		}
+		td{
+			color: #fff;
+		}
+		td input{
+			color: black;
+		}
+		
+	</style>
+</head>
+<script type="text/javascript">
+		$(document).ready(function() {
+			$(".div1").show();
+			$(".div2").hide();
+			$(".div3").hide();
+			$(".div4").hide();
+			$("#HOME").click(function() {
+			$(".div1").show();
+			$(".div2").hide();
+			$(".div3").hide();
+			$(".div4").hide();
+			});
+			$("#SIGNUP").click(function() {
+			$(".div1").hide();
+			$(".div2").show();
+			$(".div3").hide();
+			$(".div4").hide();
+			});
+			$('#DETAILS').click(function() {
+				$(".div1").hide();
+				$(".div2").hide();
+				$(".div3").show();
+				$(".div4").hide();
+			});
+				$('#CONTACT').click(function() {
+				$(".div1").hide();
+				$(".div2").hide();
+				$(".div3").hide();
+				$(".div4").show();
+			});
+		});
+		</script>
+<body ng-app="myapp" ng-controller="mycontroller">
+	<div class="main">
+
+		<ul>
+			<li id="HOME"><a href="#">HOME</a>
+				
+					
+			</li>
+			<li id="SIGNUP"><a href="#">SIGN UP</a>
+				
+			</li>
+				
+			<li id="DETAILS"><a href="#">REGISTER</a></li>
+			<li id="CONTACT"><a href="#">STUDENT DETAILS</a></li>
+		</ul>
+		<div class="div1">
+			<h1 style="color: white;position: absolute;top: 50%;right: 50%;left: 20%;transform: translate(-50%,-50%);
+		border:1px transparent;padding: 5px 5px 5px 5px;box-shadow: 3px 3px 3px 3px #006644;border-radius: 3%;background-color:rgba(0,0,0,0.8);">WELCOME TO MY PAGE</h1>
+		<a class="btn" href="#"><h2 style="position: absolute;top: 70%;left: 12%;transform: translate(-50%,-50%);border:1px solid black;background-color:black;padding: 5px 5px 5px 5px;border-radius: 3%;box-shadow: 3px 3px 3px 3px #006644;color:white">Learn More</h2></a>
+		</div>
+		<div class="div2">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-4 col-md-offset-1">
+				
+				<form class="form-group" style=" border: 1px transparent ; padding: 10px ; margin-top: 50px ; border-radius: 3% ; box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.5) ;background-color: rgba(0,0,0,0.8);">
+					<h1 style="text-align: center; color: white ;font-size: 50px  "><b>Sign Up</b></h1>
+					<label  class="label-control"><b>Name: </b></label>
+					<input class="form-control" type="text" required placeholder="Enter Username" ng-model="user.Name">
+					<label class="label-control"><b>Email: </b></label>
+					<input class="form-control" type="email" required placeholder="Enter Email" ng-model="user.Email">
+					<label class="label-control"><b>Password: </b></label>
+					<input class="form-control" type="password" required placeholder="Enter Password" ng-model="user.Password">
+					<br>
+					<input class="btn btn-primary" type="submit" value="sign up" ng-click="signup(user)">
+				</form>
+			</div>
+		</div>
+	</div>
+					
+		</div>
+		<div class="div3">
+			<div class="container">
+				<div class="row">
+			<div class="col-md-4">
+				<form class="form-group" style=" background-color:rgba(0,0,0,0.8);border: 1px transparent; padding: 10px ; margin-top: 50px ; border-radius: 3% ; box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.5);">
+					<h1 style="color: #fff;"><b>Student Registration</b></h1>
+					<label class="label-control">Name :</label>
+					<input class="form-control" type="text" required="" placeholder="enter name" name="" ng-model="pack.name">
+					<label class="label-control">Adm no :</label>
+					<input class="form-control" type="number" required="" placeholder="enter admission no" name="" ng-model="pack.adm">
+					<label class="label-control">Date of birth: </label>
+					<input class="form-control" type="Date" name="" ng-model="pack.dob">
+					<label class="label-control">Branch :</label>
+					<select class="form-control" ng-model="pack.branch">
+						<option>---select---</option>
+						<option>CSE</option>
+						<option>ECE</option>
+						<option>EEE</option>
+						<option>MECH</option>
+						<option>CIVIL</option>
+						<option>AGRI</option>
+						<option>PT</option>
+						<option>IT</option>
+					</select>
+					<label class="label-control">Quota :</label>
+					<select class="form-control" ng-model="pack.quota">
+						<option>---select---</option>
+						<option>Convener</option>
+						<option>Management</option>
+					</select>
+					<label class="label-control">gender :</label>
+					<select class="form-control" ng-model="pack.gender">
+						<option>---select---</option>
+						<option>Male</option>
+						<option>Female</option>
+						<option>others</option>
+					</select>
+					<b style="color: #fff;">Dayscholar</b><input type="radio" name="type" value="Dayscholar" ng-model="pack.type">
+					<b style="color: #fff;">Hostler</b><input  type="radio" name="type" value="Hostler" ng-model="pack.type">
+					<br>
+					<label class="label-control">Address: </label>
+					<textarea class="form-control" ng-model="pack.address"></textarea>
+					<label class="label-control">Contact: </label>
+					<input class="form-control" type="tel" name="" ng-model="pack.contact">
+					<br>
+					<input class="btn btn-primary" type="submit" name="" ng-click="register(pack)">
+					
+
+				</form>
+			</div>
+			
+		</div>
+		
+	</div>
+		</div>
+		<div class="div4">
+			<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 style="color: #fff;"><b>Student Details</b></h1>
+				<table class="table table-bordered  table-responsive table-condensed  " style="margin-top: 50px ; background-color:rgba(0,0,0,0.8);" id="example">
+					<thead>
+						<tr>
+							<th>S.no</th>
+							<th>Name</th>
+							<th>Admission no</th>
+							<th>DOB</th>
+							<th>Branch</th>
+							<th>Quota</th>
+							<th>Gender</th>
+							<th>Dayscholar/hostler</th>
+							<th>Address</th>
+							<th>Contact</th>
+							<th>actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="field in student">
+							<td>{{$index+1|number}}</td>
+							<td>
+								<span ng-hide="edit">{{field.name}}</span>
+								<input ng-show="edit" type="text" name="" ng-model="field.name">
+							</td>
+							<td>
+								<span ng-hide="edit">{{field.adm}}</span>
+								<input ng-show="edit" type="text" name="" ng-model="field.adm">
+							</td>
+							<td>
+								<span ng-hide="edit">{{field.dob}}</span>
+								<input ng-show="edit" type="text" name="" ng-model="field.dob">
+
+							</td>
+							<td>
+								<span ng-hide="edit">{{field.branch}}</span>
+								<input ng-show="edit" type="text" name="" ng-model="field.branch">
+
+							</td>
+							<td>
+								<span ng-hide="edit">{{field.quota}}</span>
+								<input ng-show="edit" type="text" name="" ng-model="field.quota">
+
+							</td>
+							<td>
+								<span ng-hide="edit">{{field.gender}}</span>
+								<input ng-show="edit" type="text" name="" ng-model="field.gender">
+
+							</td>
+							<td>
+								<span ng-hide="edit">{{field.type}}</span>
+								<input ng-show="edit" type="text" name="" ng-model="field.type">
+
+							</td>
+							<td>
+								<span ng-hide="edit">{{field.address}}</span>
+								<input ng-show="edit" type="text" name="" ng-model="field.address">
+
+							</td>
+							<td>
+								<span ng-hide="edit">{{field.contact}}</span>
+								<input ng-show="edit" type="text" name="" ng-model="field.contact">
+
+							</td>
+							<td>
+								<button class="glyphicon glyphicon-edit btn-primary" ng-click="edit = true" ng-hide="edit"></button>
+								<button class="btn btn-danger glyphicon glyphicon-trash" ng-click="deletedata(field)"></button>
+								<button class="btn btn-success" ng-show="edit" ng-click="edit = false">OK</button>
+							</td>
+
+						</tr>	
+					</tbody>
+					
+				</table>
+			</div>
+		</div>
+		
+	</div>
+		</div>
+	
+	</div>
+
+</body>
+</html>
