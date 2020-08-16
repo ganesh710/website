@@ -79,6 +79,23 @@ router.delete('/deletedata:id', function(req, res) {
   	}
   })
 });
+router.put('/updateuser:myid', function(req, res) {
+  var id = req.params.myid;
+  console.log(id);
+  console.log(req.body);
+  coll.update({"_id":id},{$set:req.body},function(err,docs) {
+    if (err) {
+      console.log(err);
+    }
+    else{
+      console.log(docs);
+      console.log("updated")
+      res.send(docs);
+    }
+  });
+
+
+  });
 
 
 

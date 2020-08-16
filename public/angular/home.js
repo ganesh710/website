@@ -47,5 +47,16 @@ app.controller("mycontroller",function($scope,$http) {
 	}),function error(responce) {
 		alert("error occured try after some time");
 	}
+	}
+	$scope.updatedata = function(field) {
+		$http({
+			method:'put',
+			url:'/updateuser'+field._id,
+			data:field
+		}).then(function success(responce) {
+			alert("user updated");
+		}),function error(responce) {
+			alert("ohhh..shit man..!error occured..");
+		}
 	}	
 })
