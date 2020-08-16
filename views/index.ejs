@@ -273,6 +273,39 @@
 		</div>
 		
 	</div>
+		<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 style="color:#fff;text-align: center; ">BIRTHDAYS</h1>
+				<table class="table table-bordered table-responsive" style="background-color: rgba(0,0,0,0.8);">
+					<thead style="color: white;">
+						<th>sno</th>
+						<th>Name</th>
+						<th>DOB</th>
+						<th>message</th>
+						<th>sendmail/message</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="bdy in bdydata">
+							<td>{{$index+1|number}}</td>
+							<td>{{bdy.name}}</td>
+							<td>{{bdy.dob}}</td>
+							<td>Wish them a happy birthday</td>
+							<td>
+								<button class="btn btn-success glyphicon glyphicon-envelope">sendmail</button>
+								<button class="btn btn-success glyphicon glyphicon-inbox">sendmessage</button>
+							</td>
+						</tr>					
+					</tbody>
+					
+				</table>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	</div>
 		</div>
 	
 	</div>

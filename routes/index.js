@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var monk = require('monk');
+var moment = require('moment');
 var db = monk('localhost:27017/mywebsite');
 var collection = db.get('signupdata');
 var coll = db.get('studentdata');
@@ -25,7 +26,18 @@ router.post('/postsignupdata', function(req, res) {
 	})
 });
 router.post('/poststudentdata', function(req, res) {
-  coll.insert(req.body,function(err,docs) {
+  var data = {
+    "name":req.body.name,
+    "adm":req.body.adm,
+    "dob":moment(req.body.dob).format('DD-MM'),
+    "branch":req.body.branch,
+    "quota":req.body.quota,
+    "gender":req.body.gender,
+    "type":req.body.type,
+    "address":req.body.address,
+    "contact":req.body.contact
+  }
+  coll.insert(data,function(err,docs) {
   	if (err) {
   		console.log(err);
   	}
@@ -96,6 +108,23 @@ router.put('/updateuser:myid', function(req, res) {
 
 
   });
+router.get('/getbdydata', function(req, res) {
+  var today = moment().format('DD-MM');
+  console.log(today);
+  coll.find({"dob":today},function(err,docs) {
+    if (err) {
+      console.log(err);
+    }
+    else{
+      console.log(docs);
+      res.send(docs);
+    }
+    
+  })
+
+})
+
+
 
 
 

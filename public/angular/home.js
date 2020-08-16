@@ -58,5 +58,16 @@ app.controller("mycontroller",function($scope,$http) {
 		}),function error(responce) {
 			alert("ohhh..shit man..!error occured..");
 		}
-	}	
+	}
+	$http({
+		method:'get',
+		url:'/getbdydata',
+
+	}).then(function success(responce) {
+		$scope.bdydata = responce.data;
+
+	}),function error(responce) {
+		alert("error occured");
+	}
+
 })
