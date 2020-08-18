@@ -114,7 +114,7 @@
 		<div class="div1">
 			<h1 style="color: white;position: absolute;top: 50%;right: 50%;left: 20%;transform: translate(-50%,-50%);
 		border:1px transparent;padding: 5px 5px 5px 5px;box-shadow: 3px 3px 3px 3px #006644;border-radius: 3%;background-color:rgba(0,0,0,0.8);">WELCOME TO MY PAGE</h1>
-		<a class="btn" href="#"><h2 style="position: absolute;top: 70%;left: 12%;transform: translate(-50%,-50%);border:1px solid black;background-color:black;padding: 5px 5px 5px 5px;border-radius: 3%;box-shadow: 3px 3px 3px 3px #006644;color:white">Learn More</h2></a>
+		<button style="background-color: rgba(0,0,0,0.5);position: absolute;top: 70%;left:10%;color: white;padding: 5px 10px;font-size: 30px;">Learn more</button>
 		</div>
 		<div class="div2">
 			<div class="container-fluid">
@@ -147,6 +147,8 @@
 					<input class="form-control" type="text" required="" placeholder="enter name" name="" ng-model="pack.name">
 					<label class="label-control">Adm no :</label>
 					<input class="form-control" type="number" required="" placeholder="enter admission no" name="" ng-model="pack.adm">
+					<label class="label-control">Email:</label>
+					<input class="form-control" type="email" name="" placeholder="email id" ng-model="pack.email">
 					<label class="label-control">Date of birth: </label>
 					<input class="form-control" type="Date" name="" ng-model="pack.dob">
 					<label class="label-control">Branch :</label>
@@ -198,11 +200,12 @@
 			<div class="col-md-12">
 				<h1 style="color: #fff;"><b>Student Details</b></h1>
 				<table class="table table-bordered  table-responsive table-condensed  " style="margin-top: 50px ; background-color:rgba(0,0,0,0.8);" id="example">
-					<thead>
+					<thead style="color: #fff;">
 						<tr>
 							<th>S.no</th>
 							<th>Name</th>
 							<th>Admission no</th>
+							<th>Email id</th>
 							<th>DOB</th>
 							<th>Branch</th>
 							<th>Quota</th>
@@ -223,6 +226,10 @@
 							<td>
 								<span ng-hide="edit">{{field.adm}}</span>
 								<input ng-show="edit" type="text" name="" ng-model="field.adm">
+							</td>
+							<td>
+								<span ng-hide="edit">{{field.email}}</span>
+								<input ng-show="edit" type="text" name="" ng-model="field.email">
 							</td>
 							<td>
 								<span ng-hide="edit">{{field.dob}}</span>
@@ -273,10 +280,10 @@
 		</div>
 		
 	</div>
-		<div class="container">
+	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<b><h1 style="color:#fff;">BIRTHDAYS</h1></b>
+				<b><h1 style="color:#fff;">RECENTS BIRTHDAYS</h1></b>
 				<table class="table table-bordered table-responsive" style="background-color: rgba(0,0,0,0.8);">
 					<thead style="color: white;">
 						<th>sno</th>
@@ -286,18 +293,81 @@
 						<th>sendmail/message</th>
 					</thead>
 					<tbody>
-						<tr ng-repeat="bdy in bdydata">
-							<td>{{$index+1|number}}</td>
-							<td>{{bdy.name}}</td>
-							<td>{{bdy.dob}}</td>
-							<td>Wish them a happy birthday</td>
+						<tr ng-repeat="rec in recents">
+							<td>{{$index+1}}</td>
+							<td>{{rec.name}}</td>
+							<td>{{rec.dob}}</td>
+							<td>Wish {{rec.name}} a Belated happy birthday</td>
 							<td>
 								<button class="btn btn-success glyphicon glyphicon-envelope">sendmail</button>
 								<button class="btn btn-success glyphicon glyphicon-inbox">sendmessage</button>
 							</td>
 						</tr>					
 					</tbody>
-					
+				</table>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+		<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<b><h1 style="color:#fff;">TODAYS BIRTHDAYS</h1></b>
+				<table class="table table-bordered table-responsive" style="background-color: rgba(0,0,0,0.8);">
+					<thead style="color: white;">
+						<th>sno</th>
+						<th>Name</th>
+						<th>DOB</th>
+						<th>message</th>
+						<th>Email</th>
+						<th>sendmail/message</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="bdy in bdydata">
+							<td>{{$index+1}}</td>
+							<td>{{bdy.name}}</td>
+							<td>{{bdy.dob}}</td>
+							<td>Wish {{bdy.name}} a happy birthday</td>
+							<td ng-model="email">{{bdy.email}}</td>
+							<td>
+								<button class="btn btn-success glyphicon glyphicon-envelope" ng-click="sendmail(email)">sendmail</button>
+								<button class="btn btn-success glyphicon glyphicon-inbox">sendmessage</button>
+							</td>
+						</tr>					
+					</tbody>
+				</table>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<b><h1 style="color:#fff;">TOMORROW BIRTHDAYS</h1></b>
+				<table class="table table-bordered table-responsive" style="background-color: rgba(0,0,0,0.8);">
+					<thead style="color: white;">
+						<th>sno</th>
+						<th>Name</th>
+						<th>DOB</th>
+						<th>message</th>
+						<th>sendmail/message</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="tom in next">
+							<td>{{$index+1}}</td>
+							<td>{{tom.name}}</td>
+							<td>{{tom.dob}}</td>
+							<td>Wish {{tom.name}} a happy birthday in Advance</td>
+							<td>
+								<button class="btn btn-success glyphicon glyphicon-envelope">sendmail</button>
+								<button class="btn btn-success glyphicon glyphicon-inbox">sendmessage</button>
+							</td>
+						</tr>					
+					</tbody>
 				</table>
 				
 			</div>

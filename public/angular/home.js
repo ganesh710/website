@@ -69,5 +69,27 @@ app.controller("mycontroller",function($scope,$http) {
 	}),function error(responce) {
 		alert("error occured");
 	}
+	$http({
+		method:'get',
+		url:'/getrecentbdy',
+	}).then(function success(responce) {
+		$scope.recents = responce.data;
+
+	}),function error(responce) {
+		alert("error occured");
+	}
+	$http({
+		method:'get',
+		url:'/getnxtbdy',
+	}).then(function success(responce) {
+		$scope.next = responce.data;
+
+	}),function error(responce) {
+		alert("error occured");
+	}
+	$scope.sendmail = function(email) {
+		console.log(email);
+	}
+
 
 })
